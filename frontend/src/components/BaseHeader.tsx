@@ -1,13 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ACCESS_TOKEN } from "@/constant";
 import { BriefcaseIcon, LogInIcon } from "./EmptyState";
 
 const BaseHeader = () => {
-  const token = window.localStorage.getItem(ACCESS_TOKEN);
+  const [token, setToken] = useState<any>("");
+  useEffect(() => {
+    const result = window.localStorage.getItem(ACCESS_TOKEN);
+    if (result) {
+      setToken(result);
+    }
+  }, []);
+
   return (
     <header className="z-10 text-black py-6 px-4 md:px-6">
       <div className="container mx-auto flex items-center justify-between">

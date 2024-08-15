@@ -9,17 +9,25 @@ import { Skeleton } from "./ui/skeleton";
 const Protected = ({ children }: any) => {
   const router = useRouter();
   const [isAuthorized, setIsAuthorized] = useState<any>(null);
+  const [refToken, setRefreshToken] = useState<any>("");
+  const [accessToken, setAccessToken] = useState<any>("");
 
   useEffect(() => {
+    const result1 = window.localStorage.getItem(REFRESH_TOKEN);
+    const result2 = window.localStorage.getItem(ACCESS_TOKEN);
+    if (result1) {
+      setRefreshToken(result1);
+    }
+    if (result2) {
+      setAccessToken(result2);
+    }
     auth().catch(() => setIsAuthorized(false));
   }, []);
 
   const refreshToken = async () => {
-    const refreshToken = window.localStorage.getItem(REFRESH_TOKEN);
-
     try {
       const res = await api.post("/api/token/refresh/", {
-        refresh: refreshToken,
+        refresh: refToken,
       });
 
       if (res.status === 200) {
@@ -35,14 +43,12 @@ const Protected = ({ children }: any) => {
   };
 
   const auth = async () => {
-    const token = window.localStorage.getItem(ACCESS_TOKEN);
-
-    if (!token) {
+    if (!accessToken) {
       setIsAuthorized(false);
       return;
     }
 
-    const decoded = jwtDecode(token);
+    const decoded = jwtDecode(accessToken);
     const tokenExpiration = decoded.exp;
     const now = Date.now() / 1000;
 
