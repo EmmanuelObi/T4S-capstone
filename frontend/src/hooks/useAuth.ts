@@ -4,13 +4,13 @@ const useAuth = () => {
   const router = useRouter();
 
   const Logout = () => {
-    localStorage.clear();
+    window.localStorage.clear();
     router.push("/login");
     return;
   };
 
   const RegisterAndLogout = () => {
-    localStorage.clear();
+    window.localStorage.clear();
     router.push("/signup");
     return;
   };

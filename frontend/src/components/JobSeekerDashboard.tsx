@@ -25,9 +25,9 @@ import {
 import Header from "./Header";
 import JobSeekerBreads from "./JobSeekerBreads";
 import useJobs from "@/hooks/useJobs";
-import { EmptyState } from "@/app/dashboard/postings/page";
 import useApplications from "@/hooks/useApplications";
 import { v4 as uuidv4 } from "uuid";
+import EmptyState from "./EmptyState";
 
 const JobSeekerDashboard = ({ userRole }: { userRole: string }) => {
   const [jobs, setJobs] = useState<any>([]);

@@ -25,11 +25,11 @@ import {
 import Header from "./Header";
 import EmployerBreads from "./EmployerBreads";
 import useJobs from "@/hooks/useJobs";
-import { EmptyState } from "@/app/dashboard/postings/page";
 import useApplications from "@/hooks/useApplications";
 import { v4 as uuidv4 } from "uuid";
 import useProfile from "@/hooks/useProfile";
 import { Skeleton } from "@/components/ui/skeleton";
+import EmptyState from "./EmptyState";
 
 const EmployerDashboard = ({ userRole }: { userRole: string }) => {
   const [jobs, setJobs] = useState<any>([]);

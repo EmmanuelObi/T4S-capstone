@@ -15,7 +15,7 @@ const Protected = ({ children }: any) => {
   }, []);
 
   const refreshToken = async () => {
-    const refreshToken = localStorage.getItem(REFRESH_TOKEN);
+    const refreshToken = window.localStorage.getItem(REFRESH_TOKEN);
 
     try {
       const res = await api.post("/api/token/refresh/", {
@@ -23,7 +23,7 @@ const Protected = ({ children }: any) => {
       });
 
       if (res.status === 200) {
-        localStorage.setItem(ACCESS_TOKEN, res.data.access);
+        window.localStorage.setItem(ACCESS_TOKEN, res.data.access);
         setIsAuthorized(true);
       } else {
         setIsAuthorized(false);
@@ -35,7 +35,7 @@ const Protected = ({ children }: any) => {
   };
 
   const auth = async () => {
-    const token = localStorage.getItem(ACCESS_TOKEN);
+    const token = window.localStorage.getItem(ACCESS_TOKEN);
 
     if (!token) {
       setIsAuthorized(false);

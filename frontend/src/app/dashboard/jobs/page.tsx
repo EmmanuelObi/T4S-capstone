@@ -10,13 +10,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import EmptyState from "@/components/EmptyState";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Protected from "@/components/Protected";
 import useProfile from "@/hooks/useProfile";
 import useJobs from "@/hooks/useJobs";
-import { EmptyState } from "../postings/page";
 import useApplications from "@/hooks/useApplications";
 import { truncateString } from "@/lib/utils";
 

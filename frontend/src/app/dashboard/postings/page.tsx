@@ -17,6 +17,7 @@ import useProfile from "@/hooks/useProfile";
 import Protected from "@/components/Protected";
 import EditJobModal from "@/components/EditJobModal";
 import { truncateString } from "@/lib/utils";
+import EmptyState from "@/components/EmptyState";
 
 const Page = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -135,52 +136,3 @@ const Page = () => {
 };
 
 export default Page;
-
-export function EmptyState({
-  major,
-  minor,
-}: {
-  major?: string;
-  minor?: string;
-}) {
-  return (
-    <div className=" w-full flex flex-col items-center justify-center gap-4 p-8 md:p-12">
-      <div className="bg-muted rounded-full p-4 flex items-center justify-center">
-        <FileWarningIcon className="w-12 h-12 text-muted-foreground" />
-      </div>
-      <div className="space-y-2 text-center">
-        <h3 className="text-2xl font-semibold">
-          {major ? major : "No items found"}
-        </h3>
-        <p className="text-muted-foreground">
-          {minor
-            ? minor
-            : "It looks like there are no items to display. Try adding some new items."}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-export function FileWarningIcon(
-  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
-) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
-      <path d="M12 9v4" />
-      <path d="M12 17h.01" />
-    </svg>
-  );
-}

@@ -3,11 +3,11 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { BriefcaseIcon, LogInIcon } from "@/app/page";
 import { ACCESS_TOKEN } from "@/constant";
+import { BriefcaseIcon, LogInIcon } from "./EmptyState";
 
 const BaseHeader = () => {
-  const token = localStorage.getItem(ACCESS_TOKEN);
+  const token = window.localStorage.getItem(ACCESS_TOKEN);
   return (
     <header className="z-10 text-black py-6 px-4 md:px-6">
       <div className="container mx-auto flex items-center justify-between">

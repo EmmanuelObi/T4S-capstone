@@ -53,8 +53,8 @@ const LoginForm = () => {
     try {
       const res = await api.post("/api/token/", values);
 
-      localStorage.setItem(ACCESS_TOKEN, res.data.access);
-      localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+      window.localStorage.setItem(ACCESS_TOKEN, res.data.access);
+      window.localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
       toast({
         variant: "default",
         title: "Success.",

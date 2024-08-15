@@ -13,8 +13,8 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import BaseHeader from "@/components/BaseHeader";
 import useJobs from "@/hooks/useJobs";
-import { EmptyState } from "../dashboard/postings/page";
 import { truncateString } from "@/lib/utils";
+import EmptyState from "@/components/EmptyState";
 
 const Page = () => {
   const [data, setData] = useState<any>({});
